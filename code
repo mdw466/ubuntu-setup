@@ -1,0 +1,35 @@
+#! /bin/bash/
+
+##Account Tweaks
+usermod -aG mdw
+
+##Updates
+echo "Running Updates"
+sudo apt update && apt upgrade -y
+
+##Installing Apps
+echo "Installing App's"
+apt install git -y
+apt install docker.io -y
+apt install bpytop -y
+apt install zsh -y
+chsh -s $(which zsh)
+apt install stacer -y
+apt install notepadqq -y
+apt install neofetch -y
+apt install speedtest-cli -y
+
+##Custom Apps
+Echo "Brave Browser"
+sudo apt install curl
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+sudo apt update
+sudo apt install brave-browser -y
+
+##OS/GUI Edits
+echo "OS Edits"
+sudo usermod -s /usr/bin/zsh root && sudo usermod -s /usr/bin/zsh mdw
+
+##Check's Post setup
+echo $SHELL
